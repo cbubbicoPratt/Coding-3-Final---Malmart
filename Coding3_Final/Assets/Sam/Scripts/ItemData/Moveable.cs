@@ -35,6 +35,11 @@ public class Moveable : MonoBehaviour, IDragHandler, IPointerDownHandler, IPoint
         {
             gameObject.GetComponent<Image>().raycastTarget = false;
         }
+
+        if (gameObject.GetComponent<Collider2D>() != null)
+        {
+            gameObject.GetComponent<Collider2D>().enabled = false;
+        }
     }
 
     public void OnPointerUp(PointerEventData eventData)
@@ -45,7 +50,16 @@ public class Moveable : MonoBehaviour, IDragHandler, IPointerDownHandler, IPoint
             isDragging = false;
             onClickEvents.onMouseRelease?.Invoke();
 
-            gameObject.GetComponent<Image>().raycastTarget = true;
+            if (gameObject.GetComponent<Image>() != null)
+            {
+                gameObject.GetComponent<Image>().raycastTarget = true;
+            }
+
+
+            if (gameObject.GetComponent<Collider2D>() != null)
+            {
+                gameObject.GetComponent<Collider2D>().enabled = true;
+            }
         }
     }
 }

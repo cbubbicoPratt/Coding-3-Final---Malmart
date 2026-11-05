@@ -1,8 +1,17 @@
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.Events;
 public class GroceryManager : MonoBehaviour
 {
+    [System.Serializable]
+    public struct Events
+    {
+        public UnityEvent OnNewNPC;
+        public UnityEvent OnCompletion;
+        public UnityEvent OnFail;
+    }
+    public Events events;
+
     [System.Serializable]
     public struct References
     {
