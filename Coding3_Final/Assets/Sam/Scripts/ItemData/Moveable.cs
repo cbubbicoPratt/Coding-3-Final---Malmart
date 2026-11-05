@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Events;
 using UnityEngine.UI;
+[RequireComponent(typeof(Image))]
 public class Moveable : MonoBehaviour, IDragHandler, IPointerDownHandler, IPointerUpHandler
 {
     private bool isDragging = false;
@@ -29,6 +30,7 @@ public class Moveable : MonoBehaviour, IDragHandler, IPointerDownHandler, IPoint
         isDragging = true;
         transform.SetAsLastSibling();
         onClickEvents.onMouseDown?.Invoke();
+
         if (gameObject.GetComponent<Image>() != null)
         {
             gameObject.GetComponent<Image>().raycastTarget = false;
