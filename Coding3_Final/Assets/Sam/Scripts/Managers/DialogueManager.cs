@@ -1,12 +1,15 @@
 using UnityEngine;
 using UnityEngine.UI;
 using Yarn.Unity;
-
+using TMPro;
 public class DialogueManager : MonoBehaviour
 {
     public DialogueRunner dialogueRunner;
 
-    public Image background;
+    public Image backgroundDisplay;
+    public TextMeshProUGUI nameDisplay;
+    public TextMeshProUGUI textDisplay;
+
     public void ResetDialogue()
     {
         
@@ -14,7 +17,11 @@ public class DialogueManager : MonoBehaviour
     public void StartDialogue(NPCData data)
     {
         Debug.Log("Dialogue Started!");
-        dialogueRunner.name = data.NPCName;
-        dialogueRunner.StartDialogue(data.NPCName);
+        backgroundDisplay.enabled = true;
+        nameDisplay.enabled = true;
+        textDisplay.enabled = true;
+
+        nameDisplay.text = data.NPCName;
+        dialogueRunner.StartDialogue(data.NPCFirstNodeName);
     }
 }
