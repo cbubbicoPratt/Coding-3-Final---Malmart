@@ -13,6 +13,7 @@ public class DialogueManager : MonoBehaviour
     }
     public void StartDialogue(NPCData data)
     {
+        Debug.Log("Dialogue Started!");
         dialogueRunner.name = data.NPCName;
         dialogueRunner.StartDialogue(data.NPCName);
     }
