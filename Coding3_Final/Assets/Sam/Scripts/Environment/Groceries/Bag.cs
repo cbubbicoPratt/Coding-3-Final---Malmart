@@ -48,15 +48,20 @@ public class Bag : MonoBehaviour
                 collision.gameObject.GetComponent<Rigidbody2D>().gravityScale = 0;
             }
 
+            if (collision.gameObject.GetComponent<Collider2D>() != null)
+            {
+                collision.gameObject.GetComponent<Collider2D>().enabled = false;
+            }
+
             CheckIfBagComplete();
         }
     }
-    private float totalPrice;
+    public float totalPrice;
     public void CheckIfBagComplete()
     {
         totalPrice = 0;
         for (int i = 0; i < BaggedItems.Count; i++) totalPrice += BaggedItems[i].GetComponent<Grocery>().GetPrice();
-        if(totalPrice == references.groceryManager.GetTotalPrice())
+        if(totalPrice >= references.groceryManager.GetTotalPrice())
         {
             Debug.Log("Bag Complete!");
             events.OnCompletion?.Invoke();

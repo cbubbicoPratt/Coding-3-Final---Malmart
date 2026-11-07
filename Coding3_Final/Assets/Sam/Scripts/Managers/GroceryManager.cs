@@ -21,7 +21,9 @@ public class GroceryManager : MonoBehaviour
 
         public Scanner scanner;
 
-        
+        public Timer failStateTimer;
+
+        public GameManager gameManager;
     }
     public References references;
 
@@ -31,7 +33,12 @@ public class GroceryManager : MonoBehaviour
 
     public void NewNPC(NPCData newNPC)
     {
+        ResetMinigame();
         List<GroceryOrder> groceryList = newNPC.groceryList;
+
+        references.failStateTimer.ResetTimer();
+        references.failStateTimer.SetTimerLength(newNPC.timeToComplete);
+        references.failStateTimer.StartTimer();
 
         totalPrice = 0;
         for (int i = 0; i < groceryList.Count; i++)
@@ -61,12 +68,16 @@ public class GroceryManager : MonoBehaviour
     {
         references.scanner.ResetScanner();
         references.bag.ResetBag();
+        references.failStateTimer.PauseTimer();
+        references.failStateTimer.ResetTimer();
 
         for(int i = 0; i < activeGroceries.Count; i++)
         {
             Destroy(activeGroceries[i]);
-            i--;
+
         }
+
+        activeGroceries = new List<GameObject>();
     }
 
     public List<GameObject> GetActiveGroceries()
@@ -82,5 +93,14 @@ public class GroceryManager : MonoBehaviour
     {
         Debug.Log("Won NPC!");
         events.OnCompletion?.Invoke();
+        references.gameManager.NPCCompleted();
+        ResetMinigame();
+    }
+
+    public void OnFail()
+    {
+        Debug.Log("Failed NPC!");
+        events.OnFail?.Invoke();
+        ResetMinigame();
     }
 }
