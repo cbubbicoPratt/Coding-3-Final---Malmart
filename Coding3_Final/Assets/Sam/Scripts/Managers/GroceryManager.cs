@@ -24,6 +24,8 @@ public class GroceryManager : MonoBehaviour
         public Timer failStateTimer;
 
         public GameManager gameManager;
+
+        public DialogueManager dialogueManager;
     }
     public References references;
 
@@ -39,6 +41,8 @@ public class GroceryManager : MonoBehaviour
         references.failStateTimer.ResetTimer();
         references.failStateTimer.SetTimerLength(newNPC.timeToComplete);
         references.failStateTimer.StartTimer();
+
+        references.dialogueManager.StartDialogue(newNPC);
 
         totalPrice = 0;
         for (int i = 0; i < groceryList.Count; i++)

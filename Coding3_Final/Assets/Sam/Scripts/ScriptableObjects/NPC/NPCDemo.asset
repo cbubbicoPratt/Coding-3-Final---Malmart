@@ -18,5 +18,6 @@ MonoBehaviour:
     amount: 2
   - groceryType: {fileID: 11400000, guid: d607584dfaff74c418e4b044d1b02f7e, type: 2}
     amount: 2
+  NPCFirstNodeName: FirstNPC
   timeToComplete: 20
   timeOnCooldown: 2
