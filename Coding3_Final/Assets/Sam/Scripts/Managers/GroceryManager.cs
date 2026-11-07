@@ -17,22 +17,24 @@ public class GroceryManager : MonoBehaviour
     {
         public Transform spawnLocation;
         public Transform CanvasToParent;
+        public Bag bag;
+
+        public Scanner scanner;
+
+        
     }
     public References references;
 
-    [System.Serializable]
-    public struct Groceries
-    {
-        public int amount;
-        public GroceryData type;
+    public List<GameObject> activeGroceries;
 
-    }
-    public List<Groceries> groceryList;
+    public float totalPrice = 0;
 
-    [ContextMenu("New NPC")]
-    public void NewNPC()
+    public void NewNPC(NPCData newNPC)
     {
-        for(int i = 0; i < groceryList.Count; i++)
+        List<GroceryOrder> groceryList = newNPC.groceryList;
+
+        totalPrice = 0;
+        for (int i = 0; i < groceryList.Count; i++)
         {
             for (int amount = 0; amount < groceryList[i].amount; amount++)
             {
@@ -42,11 +44,43 @@ public class GroceryManager : MonoBehaviour
                 newGrocery.transform.rotation = Quaternion.identity;
 
                 Grocery GrocerySetup = newGrocery.AddComponent<Grocery>();
-                GrocerySetup.SetGroceryData(groceryList[i].type);
+                GrocerySetup.SetGroceryData(groceryList[i].groceryType);
                 GrocerySetup.SetupGrocery();
 
                 newGrocery.transform.name = GrocerySetup.GetName() + (amount + 1).ToString();
+                newGrocery.transform.tag = "Grocery";
+                activeGroceries.Add(newGrocery);
+                totalPrice += GrocerySetup.GetPrice();
             }
         }
+        events.OnNewNPC?.Invoke();
+    }
+
+    [ContextMenu("Reset Minigame")]
+    public void ResetMinigame()
+    {
+        references.scanner.ResetScanner();
+        references.bag.ResetBag();
+
+        for(int i = 0; i < activeGroceries.Count; i++)
+        {
+            Destroy(activeGroceries[i]);
+            i--;
+        }
+    }
+
+    public List<GameObject> GetActiveGroceries()
+    {
+        return activeGroceries;
+    }
+
+    public float GetTotalPrice()
+    {
+        return totalPrice;
+    }
+    public void CompleteNPC()
+    {
+        Debug.Log("Won NPC!");
+        events.OnCompletion?.Invoke();
     }
 }

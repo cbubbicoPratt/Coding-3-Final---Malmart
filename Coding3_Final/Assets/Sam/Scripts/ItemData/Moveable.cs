@@ -22,7 +22,8 @@ public class Moveable : MonoBehaviour, IDragHandler, IPointerDownHandler, IPoint
         if (!isMovable) return;
         transform.position = eventData.position - offset;
     }
-
+    private float defaultGravityScale;
+    private int defaultLayer;
     public void OnPointerDown(PointerEventData eventData)
     {
         if (!isMovable) return;
@@ -36,9 +37,14 @@ public class Moveable : MonoBehaviour, IDragHandler, IPointerDownHandler, IPoint
             gameObject.GetComponent<Image>().raycastTarget = false;
         }
 
-        if (gameObject.GetComponent<Collider2D>() != null)
+        defaultLayer = gameObject.layer;
+        gameObject.layer = LayerMask.NameToLayer("SelectedObject");
+
+        if (gameObject.GetComponent<Rigidbody2D>() != null)
         {
-            gameObject.GetComponent<Collider2D>().enabled = false;
+            defaultGravityScale = gameObject.GetComponent<Rigidbody2D>().gravityScale;
+            gameObject.GetComponent<Rigidbody2D>().linearVelocity = Vector2.zero;
+            gameObject.GetComponent<Rigidbody2D>().gravityScale = 0;
         }
     }
 
@@ -55,10 +61,11 @@ public class Moveable : MonoBehaviour, IDragHandler, IPointerDownHandler, IPoint
                 gameObject.GetComponent<Image>().raycastTarget = true;
             }
 
+            gameObject.layer = defaultLayer;
 
-            if (gameObject.GetComponent<Collider2D>() != null)
+            if (gameObject.GetComponent<Rigidbody2D>() != null)
             {
-                gameObject.GetComponent<Collider2D>().enabled = true;
+                gameObject.GetComponent<Rigidbody2D>().gravityScale = defaultGravityScale;
             }
         }
     }

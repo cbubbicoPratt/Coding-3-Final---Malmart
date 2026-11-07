@@ -23,9 +23,11 @@ public class Grocery : MonoBehaviour
     public void SetupGrocery()
     {
         rTransform = GetComponent<RectTransform>();
-        col = gameObject.GetComponent<BoxCollider2D>();
 
+        col = gameObject.GetComponent<BoxCollider2D>();
         col.size = new Vector2(rTransform.rect.width, rTransform.rect.height);
+        col.excludeLayers = LayerMask.GetMask("SelectedObject");
+
         rb = gameObject.GetComponent<Rigidbody2D>();
         rb.gravityScale = 100;
         rb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
