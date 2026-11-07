@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
+using TMPro;
 
 [RequireComponent(typeof(BoxCollider2D))]
 public class Bag : MonoBehaviour

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 public class GroceryManager : MonoBehaviour
@@ -26,6 +27,7 @@ public class GroceryManager : MonoBehaviour
         public GameManager gameManager;
 
         public DialogueManager dialogueManager;
+
     }
     public References references;
 

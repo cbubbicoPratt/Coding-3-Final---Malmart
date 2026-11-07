@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     public struct Events
     {
         public UnityEvent OnGameWin;
+        public UnityEvent OnGameLose;
     }
 
     public Events events;
