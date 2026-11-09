@@ -1,8 +1,0 @@
-﻿title: FirstNPC
----
-Hello! I am the first NPC!
-Do you like apples?
-    ->Yes
-    ->No
-Hell yeah brother.
-===
