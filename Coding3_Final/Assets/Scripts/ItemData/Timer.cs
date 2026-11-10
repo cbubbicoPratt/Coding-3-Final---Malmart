@@ -3,8 +3,10 @@ using UnityEngine.Events;
 public class Timer : MonoBehaviour
 {
     public UnityEvent onComplete;
+    public UnityEvent<float> counting;
     private bool isCounting = false;
     [SerializeField] private float TimerLength = 1f;
+
 
     private float counter = 0;
     void Update()
@@ -12,6 +14,8 @@ public class Timer : MonoBehaviour
         if (isCounting)
         {
             counter += Time.deltaTime;
+
+            counting?.Invoke(counter / TimerLength);
         }
 
         if (counter >= TimerLength)
@@ -39,5 +43,10 @@ public class Timer : MonoBehaviour
     public void SetTimerLength(float newLength)
     {
         TimerLength = newLength;
+    }
+
+    public void GetCompletion()
+    {
+
     }
 }

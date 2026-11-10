@@ -1,9 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.Events;
 [RequireComponent(typeof(BoxCollider2D))]
 public class Scanner : MonoBehaviour
 {
+    public UnityEvent onScan;
     public List<GameObject> scannedItems;
 
     private void Awake()
@@ -18,6 +19,7 @@ public class Scanner : MonoBehaviour
             Debug.Log("Grocery Scanned!");
             if (scannedItems.Contains(collision.gameObject)) return;
             scannedItems.Add(collision.gameObject);
+            onScan?.Invoke();
         }
     }
 

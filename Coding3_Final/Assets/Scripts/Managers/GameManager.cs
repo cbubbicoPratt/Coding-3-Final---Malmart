@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour
     public void NextNPC()
     {
         NPCIndex++;
-        if(NPCIndex > groceryGame.npcs.Count)
+        if(NPCIndex >= groceryGame.npcs.Count)
         {
             events.OnGameWin?.Invoke();
             Debug.Log("Game Won!");
@@ -56,5 +56,10 @@ public class GameManager : MonoBehaviour
         groceryGame.CooldownTimer.SetTimerLength(groceryGame.npcs[NPCIndex].timeOnCooldown);
         groceryGame.CooldownTimer.StartTimer();
         NextNPC();
+    }
+
+    public void InduceFail()
+    {
+        events.OnGameLose?.Invoke();
     }
 }

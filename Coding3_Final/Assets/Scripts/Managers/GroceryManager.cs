@@ -29,7 +29,7 @@ public class GroceryManager : MonoBehaviour
     }
     public References references;
 
-    public List<GameObject> activeGroceries;
+    [HideInInspector] public List<GameObject> activeGroceries;
 
     public float totalPrice = 0;
 

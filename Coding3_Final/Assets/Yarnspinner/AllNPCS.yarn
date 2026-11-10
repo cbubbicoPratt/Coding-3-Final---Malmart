@@ -1,0 +1,49 @@
+﻿title: FirstNPC
+---
+Hello! I am the first NPC!
+Do you like apples?
+    ->Yes
+    ->No
+Hell yeah brother.
+===
+title: Carl_Butts
+---
+Carl: Can you check this stuff out please? And I need it for free. I have 200k on Martstragam
+    -> I can't do that
+    Carl: …Excuse me? Do you know who the fuck I am? Do you know how many promotions it took me to get here?? Give me my free stuff, or I’ll talk to the higher-ups 
+    -> Fine... Whatever (charge him anyway)
+    Carl: Heh. That's what I thought.
+
+===
+
+title: Monica
+---
+Monica: (on the phone) Yeah, I got your damn groceries. Hold on, I need to pay… Sorry bout that, aisle 129 residents are having a crazy food shortage. Just drove 40 minutes for this stuff!
+    -> How is there a shortage?
+    Monica: Fuck if I know guy, I'm not in charge.
+    -> Okay
+    Monica: You fuckin' people are always miserable. 
+===
+title: Chom
+---
+Chom: Beautiful day, isn’t it? You can tell by the air conditioning blasting that It’s probably hot outside. Maybe they’ll replicate the weather inside someday!
+    -> Maybe.
+    Chom: That's the spirit! 
+    -> Probably not 
+    Chom: Oh... That makes me sad. 
+===
+title: Bigby
+---
+Bigby: What a day. I’ve been in the strawberry sector just de-seeding all day. My fingers are so cramped, alass thr higher-ups must have their seedless strawberries.
+    -> Seedless strabwerries? 
+    Bigby: Yup, a co-worker told me it was for their banquet. But what do we know? 
+    -> Sheesh
+===
+title: Rafi
+---
+Rafi: Have you heard about the all-new item scanner for Malmart groceries? They’re 50% off right now in the technology sector! Please come buy one... I need the commission. 
+    -> I'm not paying for that
+    Rafi: eye twitches Fine. I won’t be coming to this grocery sector again. 
+    -> Shouldn’t my manager give me that anyway? 
+    Rafi: All Malmart items are sold separately, silly! How do you think you got that Malmart vest? It’s coming out of that paycheck!
+===
