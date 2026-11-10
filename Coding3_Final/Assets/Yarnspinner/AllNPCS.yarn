@@ -8,42 +8,85 @@ Hell yeah brother.
 ===
 title: Carl_Butts
 ---
+<<Change_Type DialogueTimer 10 "CountdownContinues">>
+<<NewLine DialogueTimer>>
 Carl: Can you check this stuff out please? And I need it for free. I have 200k on Martstragam
+<<Change_Type DialogueTimer 10 "CountdownFails">>
+<<NewLine DialogueTimer>>
     -> I can't do that
-    Carl: …Excuse me? Do you know who the fuck I am? Do you know how many promotions it took me to get here?? Give me my free stuff, or I’ll talk to the higher-ups 
+    <<Change_Type DialogueTimer 10 "CountdownContinues">>
+    <<NewLine DialogueTimer>>
+    Carl: …Excuse me? Do you know who the fuck I am? Do you know how many promotions it took me to get here?? Give me my free stuff, or I’ll talk to the higher-ups
+    <<NewLine DialogueTimer>> 
     -> Fine... Whatever (charge him anyway)
+    <<Change_Type DialogueTimer 10 "CountdownContinues">>
+    <<NewLine DialogueTimer>>
     Carl: Heh. That's what I thought.
 
 ===
 
 title: Monica
 ---
+<<Change_Type DialogueTimer 10 "CountdownContinues">>
+<<NewLine DialogueTimer>>
 Monica: (on the phone) Yeah, I got your damn groceries. Hold on, I need to pay… Sorry bout that, aisle 129 residents are having a crazy food shortage. Just drove 40 minutes for this stuff!
+<<Change_Type DialogueTimer 10 "CountdownFails">>
+<<NewLine DialogueTimer>>
     -> How is there a shortage?
+    <<Change_Type DialogueTimer 10 "CountdownContinues">>
+    <<NewLine DialogueTimer>>
     Monica: Fuck if I know guy, I'm not in charge.
     -> Okay
+    <<Change_Type DialogueTimer 10 "CountdownContinues">>
+    <<NewLine DialogueTimer>>
     Monica: You fuckin' people are always miserable. 
 ===
 title: Chom
 ---
+<<Change_Type DialogueTimer 10 "CountdownContinues">>
+<<NewLine DialogueTimer>>
 Chom: Beautiful day, isn’t it? You can tell by the air conditioning blasting that It’s probably hot outside. Maybe they’ll replicate the weather inside someday!
+    <<Change_Type DialogueTimer 10 "CountdownFails">>
+    <<NewLine DialogueTimer>>
     -> Maybe.
+    <<Change_Type DialogueTimer 10 "CountdownContinues">>
+    <<NewLine DialogueTimer>>
     Chom: That's the spirit! 
     -> Probably not 
+    <<Change_Type DialogueTimer 10 "CountdownContinues">>
+    <<NewLine DialogueTimer>>
     Chom: Oh... That makes me sad. 
 ===
 title: Bigby
 ---
+<<Change_Type DialogueTimer 10 "CountdownContinues">>
+<<NewLine DialogueTimer>>
 Bigby: What a day. I’ve been in the strawberry sector just de-seeding all day. My fingers are so cramped, alass thr higher-ups must have their seedless strawberries.
+    <<Change_Type DialogueTimer 10 "CountdownFails">>
+    <<NewLine DialogueTimer>>
     -> Seedless strabwerries? 
+    <<Change_Type DialogueTimer 10 "CountdownContinues">>
+    <<NewLine DialogueTimer>>
     Bigby: Yup, a co-worker told me it was for their banquet. But what do we know? 
+    <<Change_Type DialogueTimer 10 "CountdownFails">>
+    <<NewLine DialogueTimer>>
     -> Sheesh
 ===
 title: Rafi
 ---
-Rafi: Have you heard about the all-new item scanner for Malmart groceries? They’re 50% off right now in the technology sector! Please come buy one... I need the commission. 
+<<Change_Type DialogueTimer 10 "CountdownContinues">>
+<<NewLine DialogueTimer>>
+Rafi: Have you heard about the all-new item scanner for Malmart groceries? They’re 50% off right now in the technology sector! Please come buy one... I need the commission.
+<<Change_Type DialogueTimer 10 "CountdownFails">>
+<<NewLine DialogueTimer>> 
     -> I'm not paying for that
-    Rafi: eye twitches Fine. I won’t be coming to this grocery sector again. 
+    <<Change_Type DialogueTimer 10 "CountdownContinues">>
+    <<NewLine DialogueTimer>>
+    Rafi: eye twitches Fine. I won’t be coming to this grocery sector again.
+    <<Change_Type DialogueTimer 10 "CountdownFails">>
+    <<NewLine DialogueTimer>> 
     -> Shouldn’t my manager give me that anyway? 
+    <<Change_Type DialogueTimer 10 "CountdownContinues">>
+    <<NewLine DialogueTimer>>
     Rafi: All Malmart items are sold separately, silly! How do you think you got that Malmart vest? It’s coming out of that paycheck!
 ===

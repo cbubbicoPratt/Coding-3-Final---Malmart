@@ -473,8 +473,8 @@
     "m_ActiveSubTarget": {
         "m_Id": "99a7c3cc7cf9421088ecbb7ac7c02d01"
     },
-    "m_AllowMaterialOverride": false,
-    "m_SurfaceType": 0,
+    "m_AllowMaterialOverride": true,
+    "m_SurfaceType": 1,
     "m_ZWriteControl": 0,
     "m_ZTestMode": 4,
     "m_AlphaMode": 0,
@@ -591,9 +591,9 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -277.60003662109377,
-            "y": 28.800012588500978,
-            "width": 104.79998779296875,
+            "x": -522.3999633789063,
+            "y": -125.60001373291016,
+            "width": 105.59994506835938,
             "height": 33.600013732910159
         }
     },
@@ -627,10 +627,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -564.7999267578125,
-            "y": 62.39998245239258,
+            "x": -469.6000061035156,
+            "y": 171.20001220703126,
             "width": 208.00003051757813,
-            "height": 301.6000061035156
+            "height": 301.60003662109377
         }
     },
     "m_Slots": [
@@ -1274,10 +1274,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -1547.9998779296875,
-            "y": 199.99998474121095,
+            "x": -1604.0001220703125,
+            "y": 215.20001220703126,
             "width": 208.0,
-            "height": 349.59991455078127
+            "height": 349.60003662109377
         }
     },
     "m_Slots": [
