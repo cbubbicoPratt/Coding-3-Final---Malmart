@@ -12,7 +12,9 @@
   <component name="ChangeListManager">
     <list default="true" id="f3fa6454-24a5-426e-8ed4-22f5aca4b9c4" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Coding3_Final/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Coding3_Final/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Shaders/UI/TImerDial.shadergraph.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Shaders/UI/TImerDial.shadergraph.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainGame.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainGame.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shaders/UI/BarTimer.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Shaders/UI/BarTimer.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Shaders/UI/RadialTimer.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Shaders/UI/RadialTimer.mat" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
