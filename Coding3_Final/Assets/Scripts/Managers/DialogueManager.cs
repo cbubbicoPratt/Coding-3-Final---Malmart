@@ -10,9 +10,13 @@ public class DialogueManager : MonoBehaviour
     public TextMeshProUGUI nameDisplay;
     public TextMeshProUGUI textDisplay;
 
+    private NPCData currentNPC;
     public void ResetDialogue()
     {
-        
+        if(currentNPC != null)
+        {
+            StartDialogue(currentNPC);
+        }
     }
     public void StartDialogue(NPCData data)
     {
@@ -22,6 +26,7 @@ public class DialogueManager : MonoBehaviour
         textDisplay.enabled = true;
 
         nameDisplay.text = data.NPCName;
+        currentNPC = data;
         dialogueRunner.StartDialogue(data.NPCFirstNodeName);
     }
 }
