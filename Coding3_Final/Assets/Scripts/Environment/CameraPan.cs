@@ -1,9 +1,9 @@
-using System;
+using UnityEngine.Events;
 using UnityEngine;
 
 public class CameraPan : MonoBehaviour
 {
-    //TODO: make background move left and right in time with mouse movement with a clamp
+    //FINISHED: make background move left and right in time with mouse movement with a clamp
     //TODO: make triggers for left and right movement disappear when clamp value is reached
     
     //REFERENCES:
@@ -13,13 +13,20 @@ public class CameraPan : MonoBehaviour
     //ints for move speed
     //int for framerate so camera moves smoothly
     //call to LeftTrigger and RightTrigger for movement events
+    //events for when camera reaches max left and right clamp values
     public Transform backgroundHolder;
     public Bounds bgBounds;
+    
     public bool movingLeft, movingRight;
-    public int moveSpeed;
-    public int targetFrameRate;
+    public int moveSpeed = 20;
+    public int targetFrameRate = 60;
+    
     private LeftTrigger leftTrigger;
     private RightTrigger rightTrigger;
+
+    public UnityEvent<bool> maxLeft;
+    public UnityEvent<bool> maxRight;
+    
     private void Start()
     {
         Application.targetFrameRate = targetFrameRate;
@@ -41,22 +48,26 @@ public class CameraPan : MonoBehaviour
         {
             if (transform.position.x >= bgBounds.max.x)
             {
-                return;
+                maxRight.Invoke(true);
+                movingRight = false;
             }
             else
             {
-                transform.position = Vector3.Lerp(transform.position, transform.position + new Vector3(0, moveSpeed, 0), Time.deltaTime * 2f);
+                maxRight.Invoke(false);
+                transform.position = Vector3.Lerp(transform.position, transform.position + new Vector3(moveSpeed, 0, 0), Time.deltaTime * 2f);
             }
         }
         else if (movingLeft)
         {
             if (transform.position.x <= bgBounds.min.x)
             {
-                return;
+                maxLeft.Invoke(true);
+                movingLeft = false;
             }
             else
             {
-                transform.position = Vector3.Lerp(transform.position, transform.position - new Vector3(0, moveSpeed, 0), Time.deltaTime * 2f);
+                maxLeft.Invoke(false);
+                transform.position = Vector3.Lerp(transform.position, transform.position - new Vector3(moveSpeed, 0, 0), Time.deltaTime * 2f);
             }
         }
     }

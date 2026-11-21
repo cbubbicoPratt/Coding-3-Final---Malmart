@@ -12,9 +12,11 @@
   <component name="ChangeListManager">
     <list default="true" id="f3fa6454-24a5-426e-8ed4-22f5aca4b9c4" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Coding3_Final/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Coding3_Final/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/ScreenMoveTest.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/ScreenMoveTest.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Environment/CameraPan.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Environment/CameraPan.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Environment/LeftTrigger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Environment/LeftTrigger.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Environment/RightTrigger.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Environment/RightTrigger.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,7 +27,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/../../../Game Coding 3/Colter Bubbico - Game Coding Assignment 3/Assets/Scripts/3D/_GameController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../../Game Coding 3/Colter Bubbico - Game Coding Assignment 3/Assets/Scripts/3D/_GameController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Managers/WinLoseManager.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
