@@ -6,13 +6,13 @@ public class LeftTrigger : MonoBehaviour
 {
     public UnityEvent<bool> leftTriggered;
 
-    public void OnPointerEnter(PointerEventData eventData)
+    public void OnMouseEnter()
     {
         Debug.Log("Moving Left");
         leftTriggered.Invoke(true);
     }
 
-    public void OnPointerExit(PointerEventData eventData)
+    public void OnMouseExit()
     {
         Debug.Log("Stopped Moving Left");
         leftTriggered.Invoke(false);

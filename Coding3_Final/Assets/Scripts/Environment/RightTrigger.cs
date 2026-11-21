@@ -6,13 +6,13 @@ public class RightTrigger : MonoBehaviour
 {
     public UnityEvent<bool> rightTriggered;
 
-    public void OnPointerEnter(PointerEventData eventData)
+    public void OnMouseEnter()
     {
         Debug.Log("Moving Right");
         rightTriggered.Invoke(true);
     }
 
-    public void OnPointerExit(PointerEventData eventData)
+    public void OnMouseExit()
     {
         Debug.Log("Stopped Moving Right");
         rightTriggered.Invoke(false);
