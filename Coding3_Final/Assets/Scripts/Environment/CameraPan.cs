@@ -1,3 +1,4 @@
+using Unity.Cinemachine;
 using UnityEngine.Events;
 using UnityEngine;
 
@@ -8,14 +9,14 @@ public class CameraPan : MonoBehaviour
     
     //REFERENCES:
     //transform holding background and all its elements
-    //bounds for the background
+    //cinemachine confiner from camera
     //bools for moving left and right
     //ints for move speed
     //int for framerate so camera moves smoothly
     //call to LeftTrigger and RightTrigger for movement events
     //events for when camera reaches max left and right clamp values
     public Transform backgroundHolder;
-    public Bounds bgBounds;
+    public CinemachineConfiner2D confiner;
     
     public bool movingLeft, movingRight;
     public int moveSpeed = 20;
@@ -30,7 +31,7 @@ public class CameraPan : MonoBehaviour
     private void Start()
     {
         Application.targetFrameRate = targetFrameRate;
-        bgBounds = backgroundHolder.GetComponent<BoxCollider2D>().bounds;
+        confiner = gameObject.GetComponent<CinemachineConfiner2D>();
         leftTrigger = GameObject.FindAnyObjectByType<LeftTrigger>();
         rightTrigger = GameObject.FindAnyObjectByType<RightTrigger>();
         leftTrigger.leftTriggered.AddListener(CheckLeft);
@@ -46,27 +47,29 @@ public class CameraPan : MonoBehaviour
     {
         if (movingRight)
         {
-            if (transform.position.x >= bgBounds.max.x)
+            if (confiner.CameraWasDisplaced(gameObject.GetComponent<CinemachineCamera>()) && transform.position.x > backgroundHolder.position.x)
             {
                 maxRight.Invoke(true);
-                movingRight = false;
+                CheckRight(false);
             }
             else
             {
                 maxRight.Invoke(false);
+                maxLeft.Invoke(false);
                 transform.position = Vector3.Lerp(transform.position, transform.position + new Vector3(moveSpeed, 0, 0), Time.deltaTime * 2f);
             }
         }
         else if (movingLeft)
         {
-            if (transform.position.x <= bgBounds.min.x)
+            if (confiner.CameraWasDisplaced(gameObject.GetComponent<CinemachineCamera>()) && transform.position.x < backgroundHolder.position.x)
             {
                 maxLeft.Invoke(true);
-                movingLeft = false;
+                CheckLeft(false);
             }
             else
             {
                 maxLeft.Invoke(false);
+                maxRight.Invoke(false);
                 transform.position = Vector3.Lerp(transform.position, transform.position - new Vector3(moveSpeed, 0, 0), Time.deltaTime * 2f);
             }
         }
