@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5725fc18dc296bd469b18c2a0e4c3bdf, type: 3}
+  m_Name: GROCERYTEST
+  m_EditorClassIdentifier: Assembly-CSharp::InGameEvent
+  eventType: 0
+  ToComplete:
+    m_PersistentCalls:
+      m_Calls: []
+  waitTime: 0
+  npcType: 0
+  NPCName: Rafi
+  NPCImage: {fileID: 21300000, guid: ded02a55acdeb594faec345d6ec254ea, type: 3}
+  groceryList:
+  - groceryType: {fileID: 11400000, guid: 9d57801025bb9c54092287fc8d17cf00, type: 2}
+    amount: 2
+  - groceryType: {fileID: 11400000, guid: 9d57801025bb9c54092287fc8d17cf00, type: 2}
+    amount: 2
+  - groceryType: {fileID: 11400000, guid: 9d57801025bb9c54092287fc8d17cf00, type: 2}
+    amount: 2
+  OnComplete:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 766397194331552269, guid: 1123dc013e0145e4b99c2fdaafba7b68, type: 3}
+        m_TargetAssemblyTypeName: AditionalEventFunctionality, Assembly-CSharp
+        m_MethodName: TestFunction
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  NPCFirstNodeName: FirstNPC
+  timeTillAngry: 50
+  angryDamagePerSecond: 50

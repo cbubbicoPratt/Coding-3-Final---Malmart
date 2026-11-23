@@ -21,8 +21,6 @@ public class Timer : MonoBehaviour
         if (counter >= TimerLength)
         {
             onComplete?.Invoke();
-            PauseTimer();
-            ResetTimer();
         }
     }
 
@@ -43,10 +41,5 @@ public class Timer : MonoBehaviour
     public void SetTimerLength(float newLength)
     {
         TimerLength = newLength;
-    }
-
-    public void GetCompletion()
-    {
-
     }
 }

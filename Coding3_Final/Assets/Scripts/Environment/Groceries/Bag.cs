@@ -65,7 +65,7 @@ public class Bag : MonoBehaviour
         {
             Debug.Log("Bag Complete!");
             events.OnCompletion?.Invoke();
-            references.groceryManager.CompleteNPC();
+            references.groceryManager.CompleteGroceries();
         }
     }
 

@@ -7,12 +7,39 @@ public class GameManager : MonoBehaviour
     [System.Serializable]
     public struct GroceryGame
     {
-        public List<NPCData> npcs;
+        public List<InGameEvent> GroceryTimeline;
         public GroceryManager groceryManager;
-
-        public Timer CooldownTimer;
+        public int eventIndex;
     }
+    [Header("Grocery Game")]
     public GroceryGame groceryGame;
+
+    [System.Serializable]
+    public struct PhoneGame
+    {
+        public List<InGameEvent> PhoneTimeline;
+        public int eventIndex;
+    }
+    [Header("Phone Game")]
+    public PhoneGame phoneGame;
+
+    [System.Serializable]
+    public struct LegislatureGame
+    {
+        public List<InGameEvent> LegislatureTimeline;
+        public int eventIndex;
+    }
+    [Header("Legislature Game")]
+    public LegislatureGame legislatureGame;
+
+    [System.Serializable]
+    public struct BombGame
+    {
+        public List<InGameEvent> BombTimeline;
+        public int eventIndex;
+    }
+    [Header("Legislature Game")]
+    public BombGame bombGame;
 
     [System.Serializable]
 
@@ -25,37 +52,71 @@ public class GameManager : MonoBehaviour
 
     public Events events;
 
-    private int NPCIndex = 0;
-
+    public PlayerManager playerManager => GameObject.FindAnyObjectByType<PlayerManager>();
+    
     private void Awake()
     {
-        NPCIndex = 0;
+        groceryGame.eventIndex = 0;
+        phoneGame.eventIndex = 0;
+        legislatureGame.eventIndex = 0;
+        bombGame.eventIndex = 0;
 
     }
     private void Start()
     {
-        SendNPC();
+        SendNPC(NPCType.Grocery);
     }
-    public void NextNPC()
+    public void NextNPC(NPCType nextType)
     {
-        NPCIndex++;
-        if(NPCIndex >= groceryGame.npcs.Count)
+        //based on NPC type, cue next part.
+        switch (nextType)
         {
-            events.OnGameWin?.Invoke();
-            Debug.Log("Game Won!");
+            case NPCType.Grocery:
+                groceryGame.eventIndex++;
+                break;
+            case NPCType.Phone:
+                phoneGame.eventIndex++;
+                break;
+            case NPCType.Legislature:
+                legislatureGame.eventIndex++;
+                break;
+            case NPCType.Bomb:
+                bombGame.eventIndex++;
+                break;
         }
     }
-    public void SendNPC()
+    public void SendNPC(NPCType nextType)
     {
-        groceryGame.groceryManager.NewNPC(groceryGame.npcs[NPCIndex]);
+        switch (nextType)
+        {
+            case NPCType.Grocery:
+                groceryGame.groceryManager.NewNPC(groceryGame.GroceryTimeline[groceryGame.eventIndex]);
+                break;
+            case NPCType.Phone:
+                break;
+            case NPCType.Legislature:
+                break;
+            case NPCType.Bomb:
+                break;
+        }
     }
 
-    public void NPCCompleted()
+    public void NPCCompleted(NPCType completedType)
     {
-        groceryGame.CooldownTimer.ResetTimer();
-        groceryGame.CooldownTimer.SetTimerLength(groceryGame.npcs[NPCIndex].timeOnCooldown);
-        groceryGame.CooldownTimer.StartTimer();
-        NextNPC();
+        switch (completedType)
+        {
+            case NPCType.Grocery:
+                groceryGame.GroceryTimeline[groceryGame.eventIndex].OnComplete?.Invoke();
+                NextNPC(NPCType.Grocery);
+                SendNPC(NPCType.Grocery);
+                break;
+            case NPCType.Phone:
+                break;
+            case NPCType.Legislature:
+                break;
+            case NPCType.Bomb:
+                break;
+        }
     }
 
     public void InduceFail()

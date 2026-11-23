@@ -61,7 +61,7 @@ Material:
     - _BUILTIN_ZTest: 4
     - _BUILTIN_ZWrite: 0
     - _BUILTIN_ZWriteControl: 0
-    - _Completion: 0.10889031
+    - _Completion: 0.081989594
     - _Radius: 0.64
     - _Scale: 0
     m_Colors:

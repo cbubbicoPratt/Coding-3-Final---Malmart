@@ -10,7 +10,9 @@ public class DialogueManager : MonoBehaviour
     public TextMeshProUGUI nameDisplay;
     public TextMeshProUGUI textDisplay;
 
-    private NPCData currentNPC;
+    public GroceryManager groceryManager;
+
+    private InGameEvent currentNPC;
     public void ResetDialogue()
     {
         if(currentNPC != null)
@@ -18,15 +20,20 @@ public class DialogueManager : MonoBehaviour
             StartDialogue(currentNPC);
         }
     }
-    public void StartDialogue(NPCData data)
+    public void StartDialogue(InGameEvent data)
     {
         Debug.Log("Dialogue Started!");
-        backgroundDisplay.enabled = true;
+        backgroundDisplay.enabled = true; 
         nameDisplay.enabled = true;
         textDisplay.enabled = true;
 
         nameDisplay.text = data.NPCName;
         currentNPC = data;
         dialogueRunner.StartDialogue(data.NPCFirstNodeName);
+    }
+
+    public void DialogueComplete()
+    {
+        groceryManager.CompleteDialogue();
     }
 }

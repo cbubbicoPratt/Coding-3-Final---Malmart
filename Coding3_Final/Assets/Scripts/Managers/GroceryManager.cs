@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using TMPro;
+using UnityEngine.UI;
 public class GroceryManager : MonoBehaviour
 {
     [System.Serializable]
@@ -21,30 +23,31 @@ public class GroceryManager : MonoBehaviour
 
         public Scanner scanner;
 
-        public Timer failStateTimer;
-
         public GameManager gameManager;
 
         public DialogueManager dialogueManager;
+
+        public Image characterImage;
     }
     public References references;
 
-    [HideInInspector] public List<GameObject> activeGroceries;
+    public List<GameObject> activeGroceries;
 
     public float totalPrice = 0;
 
-    public void NewNPC(NPCData newNPC)
+
+    public bool DialogueCompleted;
+    public bool GroceriesCompleted;
+
+    public void NewNPC(InGameEvent newNPC)
     {
         ResetMinigame();
         List<GroceryOrder> groceryList = newNPC.groceryList;
-
-        references.failStateTimer.ResetTimer();
-        references.failStateTimer.SetTimerLength(newNPC.timeToComplete);
-        references.failStateTimer.StartTimer();
-
+        references.characterImage.sprite = newNPC.NPCImage;
         references.dialogueManager.StartDialogue(newNPC);
-
         totalPrice = 0;
+        
+
         for (int i = 0; i < groceryList.Count; i++)
         {
             for (int amount = 0; amount < groceryList[i].amount; amount++)
@@ -64,6 +67,7 @@ public class GroceryManager : MonoBehaviour
                 totalPrice += GrocerySetup.GetPrice();
             }
         }
+        Debug.Log("Groceries Started!");
         events.OnNewNPC?.Invoke();
     }
 
@@ -72,16 +76,34 @@ public class GroceryManager : MonoBehaviour
     {
         references.scanner.ResetScanner();
         references.bag.ResetBag();
-        references.failStateTimer.PauseTimer();
-        references.failStateTimer.ResetTimer();
+        DialogueCompleted = false;
+        GroceriesCompleted = false;
 
         for(int i = 0; i < activeGroceries.Count; i++)
         {
             Destroy(activeGroceries[i]);
-
         }
 
         activeGroceries = new List<GameObject>();
+    }
+
+    public void CompleteDialogue()
+    {
+        DialogueCompleted = true;
+        Debug.Log("Dialogue Completed!");
+        if (DialogueCompleted && GroceriesCompleted)
+        {
+            CompleteNPC();
+        }
+    }
+    public void CompleteGroceries()
+    {
+        GroceriesCompleted = true;
+        Debug.Log("Groceries Completed!");
+        if(DialogueCompleted && GroceriesCompleted)
+        {
+            CompleteNPC();
+        }
     }
 
     public List<GameObject> GetActiveGroceries()
@@ -97,14 +119,7 @@ public class GroceryManager : MonoBehaviour
     {
         Debug.Log("Won NPC!");
         events.OnCompletion?.Invoke();
-        references.gameManager.NPCCompleted();
         ResetMinigame();
-    }
-
-    public void OnFail()
-    {
-        Debug.Log("Failed NPC!");
-        events.OnFail?.Invoke();
-        ResetMinigame();
+        references.gameManager.NPCCompleted(NPCType.Grocery);
     }
 }
