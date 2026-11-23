@@ -3,7 +3,7 @@ using UnityEngine.Events;
 using System;
 public class PlayerManager : MonoBehaviour
 {
-    private float playerWage;
+    public float playerWage;
 
     private float maxWage;
 

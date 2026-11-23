@@ -36,6 +36,8 @@ public class GameManager : MonoBehaviour
     public struct BombGame
     {
         public List<InGameEvent> BombTimeline;
+
+        public BombManager bombManager;
         public int eventIndex;
     }
     [Header("Legislature Game")]
@@ -65,6 +67,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         SendNPC(NPCType.Grocery);
+        SendNPC(NPCType.Bomb);
     }
     public void NextNPC(NPCType nextType)
     {
@@ -85,22 +88,70 @@ public class GameManager : MonoBehaviour
                 break;
         }
     }
-    public void SendNPC(NPCType nextType)
+    public void SendNPC(NPCType from)
     {
-        switch (nextType)
+
+        switch (from)
         {
             case NPCType.Grocery:
-                groceryGame.groceryManager.NewNPC(groceryGame.GroceryTimeline[groceryGame.eventIndex]);
+                RouteEvent(groceryGame.GroceryTimeline[groceryGame.eventIndex], from);
                 break;
             case NPCType.Phone:
+                RouteEvent(phoneGame.PhoneTimeline[phoneGame.eventIndex], from);
                 break;
             case NPCType.Legislature:
+                RouteEvent(legislatureGame.LegislatureTimeline[legislatureGame.eventIndex], from);
                 break;
             case NPCType.Bomb:
+                RouteEvent(bombGame.BombTimeline[bombGame.eventIndex], from);
                 break;
         }
     }
 
+    private void RouteEvent(InGameEvent current, NPCType target)
+    {
+        switch (current.eventType)
+        {
+            case EventType.Wait:
+                CreateWaiter(current);
+                break;
+            case EventType.Conditional:
+                CreateConditional(current);
+                break;
+            case EventType.NPC:
+                switch (current.npcType)
+                {
+                    case NPCType.Grocery:
+                        groceryGame.groceryManager.NewNPC(current);
+                        break;
+                    case NPCType.Phone:
+                        break;
+                    case NPCType.Legislature:
+                        break;
+                    case NPCType.Bomb:
+                        bombGame.bombManager.NewNPC(current);
+                        break;
+                }
+                break;
+        }
+    }
+
+    public void CreateWaiter(InGameEvent current)
+    {
+        GameObject waiter = new GameObject();
+        Timer waitTimer = waiter.AddComponent<Timer>();
+        waitTimer.SetTimerLength(current.waitTime);
+        waitTimer.onComplete.AddListener(() => NPCCompleted(current.npcType));
+        waitTimer.onComplete.AddListener(() => GameObject.Destroy(waiter));
+
+        waitTimer.ResetTimer();
+        waitTimer.StartTimer();
+    }
+
+    public void CreateConditional(InGameEvent current)
+    {
+
+    }
     public void NPCCompleted(NPCType completedType)
     {
         switch (completedType)
@@ -115,6 +166,9 @@ public class GameManager : MonoBehaviour
             case NPCType.Legislature:
                 break;
             case NPCType.Bomb:
+                bombGame.BombTimeline[bombGame.eventIndex].OnComplete?.Invoke();
+                NextNPC(NPCType.Bomb);
+                SendNPC(NPCType.Bomb);
                 break;
         }
     }

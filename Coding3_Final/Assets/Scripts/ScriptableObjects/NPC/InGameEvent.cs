@@ -23,6 +23,19 @@ public struct GroceryOrder
     public GroceryData groceryType;
     public int amount;
 }
+[System.Serializable]
+public struct LegislatureOrder
+{
+    public LegislaturePiece legislaturePiece;
+    public int amount;
+}
+[System.Serializable]
+public enum PhoneTarget
+{
+    FoodAisle,
+    CarAisle,
+
+}
 [CreateAssetMenu(fileName = "InGameEvent", menuName = "Scriptable Objects/InGameEvent")]
 public class InGameEvent : ScriptableObject
 {
@@ -41,6 +54,12 @@ public class InGameEvent : ScriptableObject
     public string NPCName;
     public Sprite NPCImage;
     public List<GroceryOrder> groceryList;
+
+    public List<LegislatureOrder> legislatureStack;
+
+    public PhoneTarget phoneTarget;
+
+    public int BombPressCount;
     public UnityEvent OnComplete;
 
     //DIALOGUE STUFF

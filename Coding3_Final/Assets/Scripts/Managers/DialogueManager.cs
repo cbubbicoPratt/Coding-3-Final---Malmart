@@ -29,6 +29,7 @@ public class DialogueManager : MonoBehaviour
 
         nameDisplay.text = data.NPCName;
         currentNPC = data;
+        dialogueRunner.Stop();
         dialogueRunner.StartDialogue(data.NPCFirstNodeName);
     }
 

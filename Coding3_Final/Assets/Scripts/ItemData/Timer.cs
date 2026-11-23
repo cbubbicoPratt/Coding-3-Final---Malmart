@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.Events;
 public class Timer : MonoBehaviour
 {
-    public UnityEvent onComplete;
+    public UnityEvent onComplete = new UnityEvent();
     public UnityEvent<float> counting;
     private bool isCounting = false;
     [SerializeField] private float TimerLength = 1f;

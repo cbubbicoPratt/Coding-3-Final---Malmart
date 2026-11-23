@@ -13,12 +13,13 @@ MonoBehaviour:
   m_Name: LEGISLATURETEST
   m_EditorClassIdentifier: Assembly-CSharp::InGameEvent
   eventType: 0
-  OnCompleted:
+  ToComplete:
     m_PersistentCalls:
       m_Calls: []
   waitTime: 0
-  npcType: 0
+  npcType: 3
   NPCName: 
+  NPCImage: {fileID: 0}
   groceryList:
   - groceryType: {fileID: 11400000, guid: 9d57801025bb9c54092287fc8d17cf00, type: 2}
     amount: 2
@@ -26,6 +27,14 @@ MonoBehaviour:
     amount: 2
   - groceryType: {fileID: 11400000, guid: 9d57801025bb9c54092287fc8d17cf00, type: 2}
     amount: 2
+  legislatureStack:
+  - legislaturePiece: {fileID: 11400000, guid: 4bf943dab45f6f44da5a0450a0cbc463, type: 2}
+    amount: 2
+  phoneTarget: 0
+  BombPressCount: 0
+  OnComplete:
+    m_PersistentCalls:
+      m_Calls: []
   NPCFirstNodeName: 
   timeTillAngry: 50
   angryDamagePerSecond: 50

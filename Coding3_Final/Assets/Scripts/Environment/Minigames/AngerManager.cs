@@ -17,11 +17,13 @@ public class NPCAnger : MonoBehaviour
     {
         isAngry = false;
         timer.onComplete.AddListener(OnAngry);
+        timer.counting.AddListener(UpdateAnger);
     }
     public void NewNPC(InGameEvent npcData)
     {
         currentNPC = npcData;
         ResetAnger();
+        timer.StartTimer();
     }
 
     public void ResetAnger()
@@ -33,6 +35,7 @@ public class NPCAnger : MonoBehaviour
         }
         angerAmount = 0;
         timer.ResetTimer();
+        timer.PauseTimer();
         timer.SetTimerLength(currentNPC.timeTillAngry);
         isAngry = false;
     }

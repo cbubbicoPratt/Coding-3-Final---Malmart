@@ -29,19 +29,7 @@ MonoBehaviour:
     amount: 2
   OnComplete:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 766397194331552269, guid: 1123dc013e0145e4b99c2fdaafba7b68, type: 3}
-        m_TargetAssemblyTypeName: AditionalEventFunctionality, Assembly-CSharp
-        m_MethodName: TestFunction
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   NPCFirstNodeName: FirstNPC
   timeTillAngry: 50
   angryDamagePerSecond: 50

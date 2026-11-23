@@ -28,6 +28,7 @@ public class GroceryManager : MonoBehaviour
         public DialogueManager dialogueManager;
 
         public Image characterImage;
+        public NPCAnger angerManager;
     }
     public References references;
 
@@ -42,6 +43,8 @@ public class GroceryManager : MonoBehaviour
     public void NewNPC(InGameEvent newNPC)
     {
         ResetMinigame();
+
+        references.angerManager.NewNPC(newNPC);
         List<GroceryOrder> groceryList = newNPC.groceryList;
         references.characterImage.sprite = newNPC.NPCImage;
         references.dialogueManager.StartDialogue(newNPC);
@@ -76,6 +79,7 @@ public class GroceryManager : MonoBehaviour
     {
         references.scanner.ResetScanner();
         references.bag.ResetBag();
+        references.angerManager.ResetAnger();
         DialogueCompleted = false;
         GroceriesCompleted = false;
 
