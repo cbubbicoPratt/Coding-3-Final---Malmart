@@ -36,5 +36,6 @@ public class DialogueManager : MonoBehaviour
     public void DialogueComplete()
     {
         groceryManager.CompleteDialogue();
+        dialogueRunner.Stop();
     }
 }
