@@ -30,6 +30,8 @@ MonoBehaviour:
   legislatureStack:
   - legislaturePiece: {fileID: 11400000, guid: 4bf943dab45f6f44da5a0450a0cbc463, type: 2}
     amount: 2
+  - legislaturePiece: {fileID: 11400000, guid: 4bf943dab45f6f44da5a0450a0cbc463, type: 2}
+    amount: 2
   phoneTarget: 0
   BombPressCount: 0
   OnComplete:

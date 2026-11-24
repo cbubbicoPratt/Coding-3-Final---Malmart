@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
     public struct LegislatureGame
     {
         public List<InGameEvent> LegislatureTimeline;
+        public LegislatureManager legislatureManager;
         public int eventIndex;
     }
     [Header("Legislature Game")]
@@ -40,7 +41,7 @@ public class GameManager : MonoBehaviour
         public BombManager bombManager;
         public int eventIndex;
     }
-    [Header("Legislature Game")]
+    [Header("Bomb Game")]
     public BombGame bombGame;
 
     [System.Serializable]
@@ -68,6 +69,7 @@ public class GameManager : MonoBehaviour
     {
         SendNPC(NPCType.Grocery);
         SendNPC(NPCType.Bomb);
+        SendNPC(NPCType.Legislature);
     }
     public void NextNPC(NPCType nextType)
     {
@@ -127,6 +129,7 @@ public class GameManager : MonoBehaviour
                     case NPCType.Phone:
                         break;
                     case NPCType.Legislature:
+                        legislatureGame.legislatureManager.NewNPC(current);
                         break;
                     case NPCType.Bomb:
                         bombGame.bombManager.NewNPC(current);
@@ -144,7 +147,7 @@ public class GameManager : MonoBehaviour
         waitTimer.onComplete.AddListener(() => NPCCompleted(current.npcType));
         waitTimer.onComplete.AddListener(() => GameObject.Destroy(waiter));
 
-        waitTimer.ResetTimer();
+        waitTimer.ResetTimer(); 
         waitTimer.StartTimer();
     }
 
@@ -164,6 +167,9 @@ public class GameManager : MonoBehaviour
             case NPCType.Phone:
                 break;
             case NPCType.Legislature:
+                legislatureGame.LegislatureTimeline[legislatureGame.eventIndex].OnComplete?.Invoke();
+                NextNPC(NPCType.Legislature);
+                SendNPC(NPCType.Legislature);
                 break;
             case NPCType.Bomb:
                 bombGame.BombTimeline[bombGame.eventIndex].OnComplete?.Invoke();
