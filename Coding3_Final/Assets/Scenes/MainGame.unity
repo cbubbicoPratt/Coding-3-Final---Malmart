@@ -168,6 +168,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::NPCAnger
   angerAmount: 0
   currentNPC: {fileID: 0}
+  OnTurnAngry:
+    m_PersistentCalls:
+      m_Calls: []
+  OnAngerUpdate:
+    m_PersistentCalls:
+      m_Calls: []
   isAngry: 0
 --- !u!114 &14643281
 MonoBehaviour:
@@ -291,6 +297,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::NPCAnger
   angerAmount: 0
   currentNPC: {fileID: 0}
+  OnTurnAngry:
+    m_PersistentCalls:
+      m_Calls: []
+  OnAngerUpdate:
+    m_PersistentCalls:
+      m_Calls: []
   isAngry: 0
 --- !u!114 &127664181
 MonoBehaviour:
@@ -334,6 +346,7 @@ GameObject:
   - component: {fileID: 357635196}
   - component: {fileID: 357635195}
   - component: {fileID: 357635198}
+  - component: {fileID: 357635199}
   - component: {fileID: 357635197}
   m_Layer: 5
   m_Name: Scanner
@@ -351,15 +364,15 @@ RectTransform:
   m_GameObject: {fileID: 357635193}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.901, y: 0.901, z: 0.901}
+  m_LocalScale: {x: 0.7544614, y: 0.89780915, z: 0.7544614}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 551958696}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.522617, y: 0.5}
-  m_AnchoredPosition: {x: 406, y: -564}
-  m_SizeDelta: {x: 405.1383, y: 492.4}
+  m_AnchoredPosition: {x: 563.96, y: -549}
+  m_SizeDelta: {x: 506.3664, y: 699.6758}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &357635195
 MonoBehaviour:
@@ -374,7 +387,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.5496478, g: 0.6377357, b: 0.3116482, a: 1}
+  m_Color: {r: 0.5375536, g: 0.6075471, b: 0.3519188, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -433,7 +446,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.3972168, y: -0.1368103}
+  m_Offset: {x: -4.4231033, y: -7.3674927}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -443,7 +456,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 403.83075, y: 493.84485}
+  m_Size: {x: 500.23883, y: 710.76184}
   m_EdgeRadius: 0
 --- !u!114 &357635198
 MonoBehaviour:
@@ -460,9 +473,9 @@ MonoBehaviour:
   onScan:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ScannerText, Assembly-CSharp
-        m_MethodName: AddTotal
+      - m_Target: {fileID: 357635199}
+        m_TargetAssemblyTypeName: ScannerFlash, Assembly-CSharp
+        m_MethodName: Flash
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -473,6 +486,21 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   scannedItems: []
+--- !u!114 &357635199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 357635193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 356ce32ef50d019409b07d85756afee7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ScannerFlash
+  imageToFlash: {fileID: 357635195}
+  colorToFlashTo: {r: 0.33629137, g: 0.81886786, b: 0.25184044, a: 1}
+  flashTime: 0.1
 --- !u!1 &409552582
 GameObject:
   m_ObjectHideFlags: 0
@@ -556,6 +584,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::NPCAnger
   angerAmount: 0
   currentNPC: {fileID: 0}
+  OnTurnAngry:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 790279868}
+        m_TargetAssemblyTypeName: AngerFX, Assembly-CSharp
+        m_MethodName: SetShaking
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnAngerUpdate:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 790279868}
+        m_TargetAssemblyTypeName: AngerFX, Assembly-CSharp
+        m_MethodName: SetAngerAmount
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   isAngry: 0
 --- !u!114 &409552586
 MonoBehaviour:
@@ -820,8 +878,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -704, y: -360}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: -821, y: -310.72104}
+  m_SizeDelta: {x: 200, y: 81.0086}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &622070288
 MonoBehaviour:
@@ -1572,17 +1630,14 @@ MonoBehaviour:
     groceryManager: {fileID: 409552583}
     eventIndex: 0
   phoneGame:
-    PhoneTimeline:
-    - {fileID: 11400000, guid: 7e9277e2d0e54b64ab149a28247df9e4, type: 2}
+    PhoneTimeline: []
     eventIndex: 0
   legislatureGame:
-    LegislatureTimeline:
-    - {fileID: 11400000, guid: b055741ae55270d4b9ed86f09431c8bb, type: 2}
+    LegislatureTimeline: []
     legislatureManager: {fileID: 14643282}
     eventIndex: 0
   bombGame:
-    BombTimeline:
-    - {fileID: 11400000, guid: 1f9f9cca5acbca943aae3e071f630d58, type: 2}
+    BombTimeline: []
     bombManager: {fileID: 127664179}
     eventIndex: 0
   events:
@@ -1642,6 +1697,7 @@ GameObject:
   - component: {fileID: 790279865}
   - component: {fileID: 790279867}
   - component: {fileID: 790279866}
+  - component: {fileID: 790279868}
   m_Layer: 5
   m_Name: CharacterSprite
   m_TagString: Untagged
@@ -1706,6 +1762,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 790279864}
   m_CullTransparentMesh: 1
+--- !u!114 &790279868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 790279864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4d99eed4fa7c8d4f82318b24c4ca340, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AngerFX
+  TaskImage: {fileID: 790279866}
+  colorToTurn: {r: 0.7660377, g: 0.2991883, b: 0.2991883, a: 1}
+  shakingIntensity: 5
+  shakeSpeed: 5
 --- !u!1 &831721326
 GameObject:
   m_ObjectHideFlags: 0
@@ -2346,14 +2418,14 @@ RectTransform:
   m_GameObject: {fileID: 1504446814}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -183.00061}
-  m_LocalScale: {x: 1.9722861, y: 1.9722861, z: 1.9722861}
+  m_LocalScale: {x: 1.8607336, y: 1.8607336, z: 1.8607336}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 551958696}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1321, y: -373}
+  m_AnchoredPosition: {x: 1377.4, y: -417}
   m_SizeDelta: {x: 327.0806, y: 492.6567}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1504446816
@@ -2452,7 +2524,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -2.585907, y: 7.0050354}
+  m_Offset: {x: 4.020294, y: 0.398674}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -2462,7 +2534,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 570.8952, y: 486.79413}
+  m_Size: {x: 346.2818, y: 500.0066}
   m_EdgeRadius: 0
 --- !u!114 &1787193444 stripped
 MonoBehaviour:
@@ -2777,8 +2849,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -723, y: -358}
-  m_SizeDelta: {x: 204, y: 64.5739}
+  m_AnchoredPosition: {x: -840, y: -301}
+  m_SizeDelta: {x: 204, y: 104.6208}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1965885624
 MonoBehaviour:

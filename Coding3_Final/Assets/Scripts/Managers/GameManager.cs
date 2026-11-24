@@ -68,8 +68,6 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         SendNPC(NPCType.Grocery);
-        SendNPC(NPCType.Bomb);
-        SendNPC(NPCType.Legislature);
     }
     public void NextNPC(NPCType nextType)
     {

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 [RequireComponent(typeof(Timer))]
 public class NPCAnger : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class NPCAnger : MonoBehaviour
 
     public InGameEvent currentNPC;
 
+    public UnityEvent<bool> OnTurnAngry;
+    public UnityEvent<float> OnAngerUpdate;
     public bool isAngry;
 
     
@@ -38,16 +41,19 @@ public class NPCAnger : MonoBehaviour
         timer.PauseTimer();
         timer.SetTimerLength(currentNPC.timeTillAngry);
         isAngry = false;
+        OnTurnAngry?.Invoke(false);
+        OnAngerUpdate?.Invoke(0);
     }
 
     public void UpdateAnger(float angerAmount)
     {
         this.angerAmount = angerAmount;
-        
+        OnAngerUpdate?.Invoke(angerAmount);
     }
 
     public void OnAngry()
     {
+        OnTurnAngry?.Invoke(true);
         playerManager.DecreaseWage(currentNPC.angryDamagePerSecond / 60f);
     }
 }
