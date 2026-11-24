@@ -11,7 +11,7 @@ public class PhoneToggle : MonoBehaviour
     //set this to the main canvas of the scene (maybe find a better mode of detection later
     public GameObject mainCanvas;
     public GameObject phoneMenu;
-    private Transform pMenuStartPos;
+    private Vector3 pMenuStartPos;
     public int moveTime;
     public bool clickable;
 
@@ -20,7 +20,7 @@ public class PhoneToggle : MonoBehaviour
     private void Start()
     {
         clickable = true;
-        pMenuStartPos = phoneMenu.transform;
+        pMenuStartPos = phoneMenu.transform.position;
     }
 
     private void Update()
@@ -39,7 +39,7 @@ public class PhoneToggle : MonoBehaviour
     {
         //if the panel moves up phone becomes unclickable
         clickable = false;
-        StartCoroutine(PanelMove(pMenuStartPos.position, mainCanvas.transform.position));
+        StartCoroutine(PanelMove(pMenuStartPos, mainCanvas.transform.position));
         panelOnScreen.Invoke(true);
     }
 
@@ -47,7 +47,8 @@ public class PhoneToggle : MonoBehaviour
     {
         //if the panel moves back down we can click the phone again
         clickable = true;
-        StartCoroutine(PanelMove(mainCanvas.transform.position, pMenuStartPos.position));
+        StartCoroutine(PanelMove(mainCanvas.transform.position, pMenuStartPos));
+        Debug.Log(pMenuStartPos);
         panelOnScreen.Invoke(false);
     }
 
