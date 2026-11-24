@@ -18,18 +18,21 @@ MonoBehaviour:
       m_Calls: []
   waitTime: 0
   npcType: 0
-  NPCName: 
+  NPCName: Carl
   NPCImage: {fileID: 21300000, guid: 150e036730a43fd46a1c7b18d7841af3, type: 3}
   groceryList:
   - groceryType: {fileID: 11400000, guid: d607584dfaff74c418e4b044d1b02f7e, type: 2}
     amount: 2
   - groceryType: {fileID: 11400000, guid: d607584dfaff74c418e4b044d1b02f7e, type: 2}
     amount: 2
-  - groceryType: {fileID: 11400000, guid: d607584dfaff74c418e4b044d1b02f7e, type: 2}
-    amount: 2
-  onComplete:
+  - groceryType: {fileID: 11400000, guid: 9d57801025bb9c54092287fc8d17cf00, type: 2}
+    amount: 1
+  legislatureStack: []
+  phoneTarget: 0
+  BombPressCount: 0
+  OnComplete:
     m_PersistentCalls:
       m_Calls: []
   NPCFirstNodeName: Carl_Butts
-  timeTillAngry: 50
-  angryDamagePerSecond: 50
+  timeTillAngry: 30
+  angryDamagePerSecond: 0.1

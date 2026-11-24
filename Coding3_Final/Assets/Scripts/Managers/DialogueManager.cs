@@ -12,7 +12,7 @@ public class DialogueManager : MonoBehaviour
 
     public GroceryManager groceryManager;
 
-    private InGameEvent currentNPC;
+    [SerializeField] private InGameEvent currentNPC;
     public void ResetDialogue()
     {
         if(currentNPC != null)
@@ -29,7 +29,6 @@ public class DialogueManager : MonoBehaviour
 
         nameDisplay.text = data.NPCName;
         currentNPC = data;
-        dialogueRunner.Stop();
         dialogueRunner.StartDialogue(data.NPCFirstNodeName);
     }
 

@@ -47,9 +47,28 @@ public class GroceryManager : MonoBehaviour
         references.angerManager.NewNPC(newNPC);
         List<GroceryOrder> groceryList = newNPC.groceryList;
         references.characterImage.sprite = newNPC.NPCImage;
-        references.dialogueManager.StartDialogue(newNPC);
         totalPrice = 0;
-        
+
+
+
+        if(newNPC.NPCFirstNodeName == "")
+        {
+            Debug.Log(newNPC.name + ": No name found");
+            CompleteDialogue();
+        }
+        else
+        {
+            references.dialogueManager.StartDialogue(newNPC);
+        }
+
+        Debug.Log("Groceries Started!");
+        events.OnNewNPC?.Invoke();
+
+        if (groceryList.Count <= 0)
+        {
+            CompleteGroceries(); 
+            return;
+        }
 
         for (int i = 0; i < groceryList.Count; i++)
         {
@@ -70,8 +89,7 @@ public class GroceryManager : MonoBehaviour
                 totalPrice += GrocerySetup.GetPrice();
             }
         }
-        Debug.Log("Groceries Started!");
-        events.OnNewNPC?.Invoke();
+
     }
 
     [ContextMenu("Reset Minigame")]
@@ -122,8 +140,8 @@ public class GroceryManager : MonoBehaviour
     public void CompleteNPC()
     {
         Debug.Log("Won NPC!");
-        events.OnCompletion?.Invoke();
         ResetMinigame();
+        events.OnCompletion?.Invoke();
         references.gameManager.NPCCompleted(NPCType.Grocery);
     }
 }

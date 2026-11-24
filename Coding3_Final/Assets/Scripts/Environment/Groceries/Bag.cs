@@ -61,7 +61,7 @@ public class Bag : MonoBehaviour
     {
         totalPrice = 0;
         for (int i = 0; i < BaggedItems.Count; i++) totalPrice += BaggedItems[i].GetComponent<Grocery>().GetPrice();
-        if(totalPrice >= references.groceryManager.GetTotalPrice())
+        if(totalPrice >= references.groceryManager.GetTotalPrice() - 0.1)
         {
             Debug.Log("Bag Complete!");
             events.OnCompletion?.Invoke();

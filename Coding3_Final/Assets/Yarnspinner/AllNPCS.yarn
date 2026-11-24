@@ -3,7 +3,6 @@
 Hello! I am the first NPC!
 Do you like apples?
     ->Yes
-    ->No
 Hell yeah brother.
 ===
 title: Carl_Butts
@@ -17,15 +16,20 @@ Carl: Can you check this stuff out please? And I need it for free. I have 200k o
 
 title: Monica
 ---
-Monica: (on the phone) Yeah, I got your damn groceries. Hold on, I need to pay… Sorry bout that, aisle 129 residents are having a crazy food shortage. Just drove 40 minutes for this stuff!
+Monica: (on the phone) Yeah, I got your damn groceries. 
+Monica: Hold on, I need to pay… '
+Monica: Aisle 129 residents are having a crazy food shortage. 
+Monica: Just drove 40 minutes for this stuff!
     -> How is there a shortage?
     Monica: Fuck if I know guy, I'm not in charge.
     -> Okay
-    Monica: You fuckin' people are always miserable. 
 ===
 title: Chom
 ---
-Chom: Beautiful day, isn’t it? You can tell by the air conditioning blasting that It’s probably hot outside. Maybe they’ll replicate the weather inside someday!
+Chom: Beautiful day, isn’t it? 
+Chom: You can tell by the AC blasting. 
+Chom: It’s probably hot outside. 
+Chom: Maybe they’ll replicate the weather inside someday!
     -> Maybe.
     Chom: That's the spirit! 
     -> Probably not 
@@ -40,9 +44,32 @@ Bigby: What a day. I’ve been in the strawberry sector just de-seeding all day.
 ===
 title: Rafi
 ---
-Rafi: Have you heard about the all-new item scanner for Malmart groceries? They’re 50% off right now in the technology sector! Please come buy one... I need the commission.
+Rafi: Have you heard about the all-new item scanner for Malmart groceries? 
+They’re 50% off right now in the technology sector! 
+Please come buy one... I need the commission.
     -> I'm not paying for that
     Rafi: eye twitches Fine. I won’t be coming to this grocery sector again.
     -> Shouldn’t my manager give me that anyway? 
-    Rafi: All Malmart items are sold separately, silly! How do you think you got that Malmart vest? It’s coming out of that paycheck!
+    Rafi: All Malmart items are sold separately, silly! 
+    Rafi: How do you think you got that Malmart vest? 
+    Rafi: It’s coming out of that paycheck!
+===
+
+title: General_Manager
+---
+Jerky is it? 
+You’ll earn your last name as your title once you get promoted to General Manager, like me. 
+I am a general manager
+*salutes*. 
+Under my supervision, you must do your job to the absolute top standard of the Malmart employee work code. 
+Any exceptions, and you’re sent back to the bottom. 
+Understand?
+We offer a dynamic wage system.
+Do good and your wage goes up.
+Do bad and it goes straight to the bottom.
+If it hit's zero, you're fired.
+Oh! Make sure everyone gets their groceries done fast.
+People are pretty impatient around here.
+Don't fuck up!
+*salutes*
 ===

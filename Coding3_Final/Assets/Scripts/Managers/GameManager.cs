@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
         public List<InGameEvent> GroceryTimeline;
         public GroceryManager groceryManager;
         public int eventIndex;
+
+        [HideInInspector] public bool completed;
     }
     [Header("Grocery Game")]
     public GroceryGame groceryGame;
@@ -60,6 +62,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         groceryGame.eventIndex = 0;
+        groceryGame.completed = false;
         phoneGame.eventIndex = 0;
         legislatureGame.eventIndex = 0;
         bombGame.eventIndex = 0;
@@ -76,6 +79,11 @@ public class GameManager : MonoBehaviour
         {
             case NPCType.Grocery:
                 groceryGame.eventIndex++;
+                if (groceryGame.eventIndex >= groceryGame.GroceryTimeline.Count)
+                {
+                    groceryGame.completed = true;
+                    events.OnGameWin?.Invoke();
+                }
                 break;
             case NPCType.Phone:
                 phoneGame.eventIndex++;
